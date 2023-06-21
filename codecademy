@@ -1,0 +1,35 @@
+
+select email_domain, count(*) as count
+from user where email_domain like '%edu'
+group by email_domain
+order by count desc
+limit 25;
+
+select count(*) as count
+from user where email_domain like '%.edu' and country='new york';
+
+select count(*) as count
+from user
+where mobile_app = 'mobile-user';
+
+
+select date_format(sign_up_at, '&y-&m-%d %h:00:00') as hour, count(*) as sign_up_count
+from user
+group by hour
+order by hour;
+
+select u.email_domain,p.learn_cpp, p.learn_sql, p.learn_javascript, p.learn_java
+from user u
+join progress p on u.user_id=p.user_id
+where u.email_domain like '%.edu';
+
+
+select u.email_domain,p.learn_cpp, p.learn_sql, p.learn_javascript, p.learn_java
+from user u
+join progress p on u.user_id=p.user_id
+where u.email_domain like 'new york';
+
+select u.email_domain,p.learn_cpp, p.learn_sql, p.learn_javascript, p.learn_java
+from user u
+join progress p on u.user_id=p.user_id
+where u.email_domain like 'Chicago';
